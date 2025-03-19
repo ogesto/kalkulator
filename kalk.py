@@ -1,40 +1,32 @@
 #inportowanie 
 import math
 
-#1Podanie liczb i działania 
-print('Liczba 1 jest pierwsa z koleji więc: od niej zostanie coś odjęte, ona zostanie podzielona, i ona zostanie pomnożona przez liczbę 2')
-znak = input('Podaj znak działania: ')
-#liczba 1
-a= float(input('Podaj liczbę 1: '))
-#liczba 2
-b = float(input('Podaj liczbę 2: '))
+def calc(num1, num2, znak): #Funkcja która oblicza wynik działań
+    if znak == "+": # Jeżeli znak to "+" wtedy
+        return num1 + num2
+    elif znak == "-":# Jeżeli znak to "-" wtedy
+        return num1 - num2
+    elif znak == "*":# Jeżeli znak to "*" wtedy
+        return num1 * num2
+    elif znak == "/":# Jeżeli znak to "/" wtedy
+        if num1 == 0 or num2 == 0: #Jeżeli a lub b to 0 wtedy zwracamy błąd dzielenia przez zero
+            return ZeroDivisionError
+        return num1 / num2
+    elif znak == "^":# Jeżeli znak to "^" wtedy
+        return num1 ** num2
+    elif znak == "~":# Jeżeli znak to "~" wtedy
+        return math.sqrt(num1, num2) # Używamy wbudowanej funkcji która weżmie pierwiastek num2 stopnia z num1
+        
 
-#2Sprawdzenie błędów 
-if znak == '/' and a or b == 0 :
-    print('Nie dzielimy przez 0')
-    exit()
+def main(): # Funkcja główna w której jest cały kod
+    #1Podanie liczb i działania 
+    print('Liczba 1 jest pierwsa z koleji więc: od niej zostanie coś odjęte, ona zostanie podzielona, i ona zostanie pomnożona przez liczbę 2')
+    znak = input('Podaj znak działania: ')
+    #liczba 1
+    a= float(input('Podaj liczbę 1: '))
+    #liczba 2
+    b = float(input('Podaj liczbę 2: '))
 
-#3Dalsze działania na liczbach 
+    print(f"{a}{znak}{b} = {calc(a, b, znak)}") #Zwrócenie wyniku w ładnej formie
 
-if znak == '+' :
-    print('wynik to:',a + b)
-
-elif znak == '-':
-    print('wynik to:',a - b)
-
-elif znak == '*':
-    print('wynik to:',a * b)
-
-elif znak == '/' and a or b != 0: 
-    print('wynik to:',a / b)
-
-elif znak == '^':
-    print('potengi jeszcze nie działają')
-
-elif znak == '~':
-    print('pierwiastkowanie jeszcze nie działa ')
-    
-    
-
-##Sprawdzenie działanie punktu 1
-print(znak, a, b)
+main() # Wywołanie funkcji main()
